@@ -127,6 +127,7 @@ body {
   mask-size: cover;
   position: relative;
   z-index: 99;
+  cursor: pointer;
 }
 
 .tile:hover {
@@ -198,6 +199,7 @@ body {
   border: 1px solid var(--gameboard-back);
   border-radius: 5px;
   padding: 1rem 2rem;
+  cursor: pointer;
 }
 
 .gameover-card {
@@ -222,6 +224,13 @@ body {
   color: white;
   border: 1px solid var(--gameboard-back);
   background-color: var(--gameboard-front);
+  cursor: pointer;
 }
 
+
+@media (max-width: 768px) {
+  #root {
+    flex-direction: column-reverse;
+  }
+}
 
