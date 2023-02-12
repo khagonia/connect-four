@@ -1,0 +1,227 @@
+:root {
+  /* Main Pallette */
+  --background-color: black;
+  --gameboard-back: #8ecae6;
+  --gameboard-front: #219ebc;
+  --chips-player1: #ffb703;
+  --chipe-player2: #fb8500;
+
+  /* Neutrals */
+  --black-1: black;
+  --gray-1: #495054;
+  --gray-2: #bccad0;
+  --white-1: white;
+
+  /* Fonts */
+  --fs-heading-primary: 4.8rem;
+  --fs-subheading-primary: 2.4rem;
+  --fs-body: 1.6rem;
+  
+}
+
+html {
+  font-size: 62.5%;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body {
+  height: 100vh;
+  background-color: var(--background-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
+  position: relative;
+}
+
+.gameboard {
+ width: 80vmin; 
+ height: 80vmin;
+ background-color: var(--gameboard-front); 
+ display: grid;
+ place-items: center;
+ border-radius: 1rem;
+}
+
+.foreground {
+  --tile-dimension: calc(77vmin / var(--cols));
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--tile-dimension)) ;
+  grid-template-rows: repeat(var(--rows), var(--tile-dimension));;
+  justify-content: center;
+  align-content: end;
+  background-color: var(--gameboard-back);
+  position: relative;
+  z-index: 99;;
+}
+
+.tile {
+  background-color: var(--gameboard-front);
+  mask-image: url(../assets/tile-mask.webp);
+  mask-position: center;
+  mask-size: cover;
+  position: relative;
+  z-index: 99;
+}
+
+.tile:hover {
+  background-color: #219ebc99;
+}
+
+.chip {
+  position: absolute;
+  width: calc( var(--tile-dimension) - 1vmin);
+  height: calc( var(--tile-dimension) - 1vmin);
+  top: calc(var(--chip-row)* var(--tile-dimension) + 0.5vmin);
+  left: calc(var(--chip-col)* var(--tile-dimension) + 0.5vmin);
+  background-color: black;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.chip.player-1 {
+  background-color: var(--chips-player1);
+}
+
+.chip.player-2 {
+  background-color: var(--chipe-player2);
+}
+
+.info-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.info-card p {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.2;
+}
+
+.info-title {
+  font-size: 1.4rem;
+  margin-bottom: 1.6rem;
+}
+
+.info-player {
+  font-size: var(--fs-subheading-primary);
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.info-card .chip {
+  --tile-dimension: 10vmin;
+  display: inline-block;
+  position: static;
+}
+
+.info-card .chip.player-1 {
+  background-color: var(--chips-player1);
+}
+
+.info-card .chip.player-2 {
+  background-color: var(--chipe-player2);
+}
+
+.info-gamestart {
+  font-size: var(--fs-body);
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  color: white;
+  background-color: var(--gameboard-front);
+  border: 1px solid var(--gameboard-back);
+  border-radius: 5px;
+  padding: 1rem 2rem;
+}
+
+.gameover-card {
+  position: absolute;
+  max-width: 40rem;
+  max-height: 20rem;
+  background-color: white;
+  padding: 2.4rem 4.8rem;
+  font-size: var(--fs-subheading-primary);
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  border-radius: 10px;
+  line-height: 1.2;
+  z-index: 9999;
+}
+
+.gameover-card button {
+  font-size: var(--fs-body);
+  margin-top: 3rem;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  color: white;
+  border: 1px solid var(--gameboard-back);
+  background-color: var(--gameboard-front);
+}
+
+
