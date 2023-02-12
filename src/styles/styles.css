@@ -126,7 +126,7 @@ body {
   mask-position: center;
   mask-size: cover;
   position: relative;
-  z-index: 99;
+  z-index: 999;
   cursor: pointer;
 }
 

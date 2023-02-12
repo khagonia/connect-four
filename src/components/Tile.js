@@ -8,7 +8,7 @@ const Tile = ({ col, addChip }) => {
   }
 
   return (
-    <div className="tile" onClick={tileClickHandler}></div>
+    <div className="tile" onClick={tileClickHandler} onTouchEnd={tileClickHandler}></div>
   )
 }
 
